@@ -1,6 +1,6 @@
 # PENETRATION TESTING REPORT
 
-### Footprinting & Network Scanning Phases
+### Two Separate Week 2 Projects
 
 **W2-PM-FINAL | CYBERSECURITY | NETWORKWALKS**
 
@@ -12,7 +12,7 @@
 | **Modules completed** | W2-PM1 (Multiple Kali Tools)<br>W2-PM5 (Zenmap Scanning) |
 | **Client/Target** | 1. Networkwalks (secured written permission already)<br>2. My own local LAN Network |
 | **Permission secured from client?** | Yes |
-| **Phases covered** | **Phase 1:** Reconnaissance & Footprinting<br>**Phase 2:** Scanning & Network Discovery<br>**Phase 3-5:** In Progress |
+| **Projects completed** | **W2-PM1:** Footprinting & Reconnaissance (Complete)<br>**W2-PM5:** Network Scanning & Discovery (Complete)<br>**W2-PM-FINAL:** This report |
 
 # 1. Liability Disclaimer
 
@@ -20,9 +20,14 @@ I have performed these activities only on the systems & devices where I had secu
 
 # 2. Introduction
 
-This report covers footprinting the `networkwalks.com` domain using multiple Kali Linux tools (W2-PM1) and scanning my own local network with Zenmap (W2-PM5). One module covers the footprinting phase and the other covers the scanning phase, so together they show how an attacker moves from gathering public information to mapping live hosts on a network. It is the Week 2 part of my ongoing internship program at Networkwalks.
+This report covers two **separate** Week 2 projects from my Cybersecurity & Ethical Hacking internship at Networkwalks:
 
-All commands were run in Kali Linux (footprinting) and on a Windows PC with Zenmap installed (scanning). Every step below includes the exact command used, the result I observed, a screenshot as evidence, and a short note on why the finding matters from an attacker's point of view.
+- **W2-PM1 (Elective) — Footprinting with multiple Kali tools:** reconnaissance against the `networkwalks.com` domain using WHOIS, WhatWeb, Nslookup, Curl, Wafw00f and DNSRecon.
+- **W2-PM5 (Essential) — Zenmap based Network Scanning:** host discovery and topology mapping on my own local LAN.
+
+These are independent assignments, not two phases of one exercise. W2-PM1 focuses on gathering public information about a domain, while W2-PM5 focuses on discovering live devices inside a local network. This document is the **W2-PM-FINAL** report that covers both modules.
+
+All commands for W2-PM1 were run in Kali Linux, and the W2-PM5 scan was run on a Windows PC with Zenmap installed. Every step below includes the exact command used, the result I observed, a screenshot as evidence, and a short note on why the finding matters from an attacker's point of view.
 
 **Scope and authorization:** Footprinting was limited to passive and semi-passive queries against the public `networkwalks.com` domain, for which written permission was already secured. Scanning was limited to my own home LAN (`192.168.1.0/24`). No exploitation, credential attacks, brute forcing or vulnerability validation was performed in either phase.
 
@@ -42,9 +47,11 @@ The table below lists each tool used in this report and its purpose.
 | Zenmap (Nmap GUI) | Scan the local subnet to find live hosts, IPs and MAC addresses, and build a topology map |
 | Windows CMD (`ipconfig`) | Identify the local IP address, subnet mask, default gateway and DNS suffix |
 
-# 4. Activities Performed
+# 4. Projects Performed
 
-## 4.1 Footprinting & Reconnaissance
+## 4.1 Project 1 — W2-PM1: Footprinting & Reconnaissance
+
+**Module:** W2-PM1 (Elective) | **Target:** `networkwalks.com` (authorized)
 
 I performed reconnaissance against the `networkwalks.com` domain using six Kali Linux tools: **WHOIS, WhatWeb, Nslookup, Curl, Wafw00f and DNSRecon**. Each tool was used to collect a different type of information about the target.
 
@@ -159,9 +166,11 @@ DNSRecon completed general enumeration and returned eight SRV records. Key resul
 
 **Observation:** The enumerated records map out the mail infrastructure, the hosting provider (HostGator/cPanel) and the exact BIND version in use. The SPF record ends in `~all` (softfail), which weakens protection against email spoofing. DNSSEC is not deployed.
 
-## 4.2 Network Scanning with Zenmap
+## 4.2 Project 2 — W2-PM5: Zenmap Network Scanning
 
-For the second activity, I used **Zenmap** to perform network discovery on my local network. The practical required me to identify my local IP address and subnet, discover live hosts, identify their IP and MAC addresses, and generate a network topology.
+**Module:** W2-PM5 (Essential) | **Target:** My own local LAN (`192.168.1.0/24`)
+
+For this separate project, I used **Zenmap** to perform network discovery on my local network. The practical required me to identify my local IP address and subnet, discover live hosts, identify their IP and MAC addresses, and generate a network topology.
 
 ### 4.2.1 Local IP and Subnet Identification
 
@@ -284,11 +293,11 @@ Based on the observations from these activities, I recommend the following secur
 
 # 7. Conclusion
 
-During Week 2 of my Cybersecurity & Ethical Hacking internship, I completed practical activities covering footprinting, reconnaissance and network scanning.
+During Week 2 of my Cybersecurity & Ethical Hacking internship, I completed two **separate** practical projects: **W2-PM1** (footprinting with multiple Kali tools) and **W2-PM5** (Zenmap network scanning). This document is the **W2-PM-FINAL** report covering both.
 
-In the footprinting activity, I used six Kali Linux tools to collect information about the target domain. WHOIS provided the registration and hosting details, WhatWeb identified the WordPress stack and its plugins, Nslookup resolved the domain to `192.232.216.135`, Curl exposed the HTTP headers and cookie configuration, Wafw00f identified the ModSecurity WAF, and DNSRecon mapped the DNS, mail and autodiscover infrastructure while disclosing the BIND version.
+In the **W2-PM1** project, I used six Kali Linux tools to collect information about the target domain. WHOIS provided the registration and hosting details, WhatWeb identified the WordPress stack and its plugins, Nslookup resolved the domain to `192.232.216.135`, Curl exposed the HTTP headers and cookie configuration, Wafw00f identified the ModSecurity WAF, and DNSRecon mapped the DNS, mail and autodiscover infrastructure while disclosing the BIND version.
 
-In the network scanning activity, I used `ipconfig` to identify my address (`192.168.1.77/24`) and gateway (`192.168.1.254`), then used Zenmap's Ping scan to discover live hosts. The first scan found 7 hosts and the full subnet scan found 11, including their MAC addresses and vendors. I also produced a network topology map and completed the practical lab with a score of 100%.
+In the **W2-PM5** project, I used `ipconfig` to identify my address (`192.168.1.77/24`) and gateway (`192.168.1.254`), then used Zenmap's Ping scan to discover live hosts. The first scan found 7 hosts and the full subnet scan found 11, including their MAC addresses and vendors. I also produced a network topology map and completed the practical lab with a score of 100%.
 
 The exercises showed me that information gathering is an important part of cybersecurity. Even before attempting to exploit a system, a security professional can learn a significant amount about an environment by carefully analysing publicly available information and network responses.
 
